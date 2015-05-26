@@ -10,6 +10,7 @@ var $name = $("#name");
 var $email = $("#email");
 var $website = $("#website");
 var $hiddenDiv = $("#submit-div");
+var correct=true;
 
 $hiddenDiv.hide();
 
@@ -29,27 +30,34 @@ function submitClicked(e) {
 	
 	if ($name.val().match(nameErr)) {
 		$("div").children().eq(2).html("Invalid Input:  Name cannot contain numbers.");
+		var correct=false;
 	}
 	else if($name.val() === "") {
 		$("div").children().eq(2).html("Invalid Input:  Must not be blank.");
+		var correct=false;
 	}
-	else if (!$email.val().match(emailErr)) {		
+	if (!$email.val().match(emailErr)) {		
 		$("div").children().eq(4).html("Invalid Input:  Email must contain @ symbol.");
+		var correct=false;
 	}
 	else if ($email.val() === "") {
 		$("div").children().eq(4).html("Invalid Input:  Must not be blank.");
+		var correct=false;
 	}
-	else if (!$website.val().match(webErr)) {
+	if (!$website.val().match(webErr)) {
 		$("div").children().eq(6).html("Invalid Input:  Website must contain http://");
+		var correct=false;
 	}
 	else if($website.val() === "") {
 		$("div").children().eq(6).html("Invalid Input:  Must not be blank.");
+		var correct=false;
 	}
-	else if ($txtArea.val() === "") {
+	if ($txtArea.val() === "") {
 		$("div").children().eq(8).html("Invalid Input:  Message must not be left blank.");
 		$("div").children().eq(8).css("marginBottom", "5px");
+		var correct=false;
 	}
-	else {
+	if (correct = true) {
 		$form.hide();
 		$hiddenDiv.show();
 		$hiddenDiv.html("Thanks for contacting us "+ $name.val()+ ".  We have received your message and will be in touch with you shortly.");

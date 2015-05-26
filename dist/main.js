@@ -14,14 +14,18 @@ $btn.on("click", submitClicked);
 function submitClicked(e) {
 
 	console.log("submitClicked");
-	var numbers = /[0-9]/;
-	if ($inputs.val().match(numbers) || $inputs.val() === "") {
+	var name = /[0-9]/;
+	
+	if ($inputs.val().match(name)) {
 		console.log("noooooo");
-		var exception = $inputs.val().match(numbers);
-console.log(exception[0]);
 		$("div").children().eq(2).css("color", "red");
+		$("div").children().eq(2).html("Invalid Input:  Name cannot contain numbers.");
 		// $error.css("color", "red");
 	}
+	else if($inputs.val() === "") {
+		$("div").children().eq(2).html("Invalid Input:  Must not be blank.");
+	}
+	// else if ($inputs.val().match(numbers))
 
 }
 
@@ -43,7 +47,7 @@ $inputs.css("display", "block");
 $inputs.css("width", "90%");
 $inputs.css("marginLeft", "auto");
 $inputs.css("marginRight", "auto");
-$inputs.css("marginBottom", "-10px");
+$inputs.css("marginBottom", "-5px");
 $inputs.css("height", "5%");
 $inputs.css("color", "#a3a2a7");
 
@@ -52,7 +56,7 @@ $txtArea.css("width", "90%");
 $txtArea.css("marginLeft", "auto");
 $txtArea.css("marginRight", "auto");
 $txtArea.css("height", "10%");
-$txtArea.css("marginBottom", "-10px");
+$txtArea.css("marginBottom", "-5px");
 $txtArea.css("color", "#a3a2a7");
 
 $btn.css("backgroundColor", "#1c1e2d");

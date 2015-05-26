@@ -14,10 +14,13 @@ $btn.on("click", submitClicked);
 function submitClicked(e) {
 
 	console.log("submitClicked");
-	var re = /[0-9]/;
-	if ($inputs.val().match(re)) {
+	var numbers = /[0-9]/;
+	if ($inputs.val().match(numbers) || $inputs.val() === "") {
 		console.log("noooooo");
-		$error.css("color", "red");
+		var exception = $inputs.val().match(numbers);
+console.log(exception[0]);
+		$("div").children().eq(2).css("color", "red");
+		// $error.css("color", "red");
 	}
 
 }

@@ -57,7 +57,7 @@ function submitClicked(e) {
 		$("div").children().eq(8).css("marginBottom", "5px");
 		var correct=false;
 	}
-	if (correct = true) {
+	if (correct=true) {
 		$form.hide();
 		$hiddenDiv.show();
 		$hiddenDiv.html("Thanks for contacting us "+ $name.val()+ ".  We have received your message and will be in touch with you shortly.");

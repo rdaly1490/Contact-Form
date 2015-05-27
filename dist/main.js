@@ -105,7 +105,6 @@ $txtArea.css("height", "10%");
 $txtArea.css("marginBottom", "-5px");
 $txtArea.css("color", "black");
 
-$btn.css("backgroundColor", "#1c1e2d");
 $btn.css("color", "white");
 $btn.css("width", "40%");
 $btn.css("height", "60px");

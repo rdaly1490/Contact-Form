@@ -21,8 +21,12 @@ function submitClicked(e) {
 
 	joinedName = ($name.val().replace(/\s+/g, ''));
 	var names = validator.isAlpha(joinedName);
+	var namesNull = validator.isNull($name.val());
 	var emails = validator.isEmail($email.val());
+	var emailsNull = validator.isNull($email.val());
+	var webContain = validator.contains($website.val(), "http://");
 	var web = validator.isURL($website.val());
+	var webNull = validator.isNull($website.val());
 	var txt = validator.isNull($txtArea.val());
 
 	console.log(names);
@@ -31,31 +35,40 @@ function submitClicked(e) {
 	console.log(txt);
 
 
-	if (names && emails && web && !txt) {
+	if (names && emails && webContain && !txt) {
 		$form.hide();
 		$hiddenDiv.show();
 		$hiddenDiv.html("Thanks for contacting us "+ $name.val()+ ".  We have received your message and will be in touch with you shortly.");
 	}
-	if (!names) {
-		$("div").children().eq(2).html("Invalid Input");
+	if (namesNull) {
+		$("div").children().eq(2).html("Invalid Input: Cannot be left blank");
 	}	
+	else if (!names) {
+		$("div").children().eq(2).html("Invalid Input: Name cannot contain numbers");
+	}
 	else {
 		$("div").children().eq(2).html("");
 	}
-	if (!emails) {
-		$("div").children().eq(4).html("Invalid Input");
+	if (emailsNull) {
+		$("div").children().eq(4).html("Invalid Input: Cannot be left blank");
+	}
+	else if (!emails) {
+		$("div").children().eq(4).html("Invalid Input: Email must contain @ symbol and be valid");
 	}
 	else {
 		$("div").children().eq(4).html("");
 	}
-	if (!web) {
-		$("div").children().eq(6).html("Invalid Input");	
+	if (webNull) {
+		$("div").children().eq(6).html("Invalid Input: Cannot be left blank");
+	}
+	else if (!webContain) {
+		$("div").children().eq(6).html("Invalid Input: Website must start with http://");	
 	}
 	else {
 		$("div").children().eq(6).html("");
 	}
 	if (txt) {
-		$("div").children().eq(8).html("Invalid Input");
+		$("div").children().eq(8).html("Invalid Input: Cannot be left blank");
 		$btn.css("marginTop", "10px");
 	}
 	else {
@@ -130,9 +143,5 @@ $("#form label").css("marginLeft", "5%");
 $("#form label").css("color", "#1c1e2d");
 
 $("#form h1").css("marginLeft", "5%");
-// $("#form label").css("marginBottom", "100px");
-
-
-
 
 }

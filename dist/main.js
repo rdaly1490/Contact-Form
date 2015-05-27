@@ -56,6 +56,7 @@ function submitClicked(e) {
 	}
 	if (txt) {
 		$("div").children().eq(8).html("Invalid Input");
+		$btn.css("marginTop", "10px");
 	}
 	else {
 		$("div").children().eq(8).html("");
@@ -69,7 +70,7 @@ $form.css("width", "80%");
 $form.css("marginLeft", "auto");
 $form.css("marginRight", "auto");
 $form.css("marginTop", "50px");
-$form.css("height", "500px");
+$form.css("height", "520px");
 $form.css("paddingTop", "10px");
 $form.css("boxSizing", "border-box")
 
